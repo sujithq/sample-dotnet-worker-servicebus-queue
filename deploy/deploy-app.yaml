@@ -30,4 +30,4 @@ metadata:
   labels:
     app: order-processor
 data:
-  servicebus-connectionstring: <base64-encoded-connection-string>
+  servicebus-connectionstring: <SERVICE_BUS_CONNECTION_STRING>

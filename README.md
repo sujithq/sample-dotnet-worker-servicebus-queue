@@ -100,7 +100,7 @@ Once the authorization rule is created, we can list the connection string as fol
 Create a base64 representation of the connection string and update our Kubernetes secret in `deploy/deploy-app.yaml`:
 
 ```cli
-❯ echo "<connection string>" | base64
+❯ echo -n "<connection string>" | base64
 ```
 
 ### Deploying our order processor
@@ -134,7 +134,7 @@ Next to that, you will see that our deployment shows up with one pods created:
 ```cli
 ❯ kubectl get deployments --namespace keda-dotnet-sample -o wide
 NAME              DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE       CONTAINERS        IMAGES                                                   SELECTOR
-order-processor   0         0         0            0           49s       order-processor   kedasamples/sample-dotnet-worker-servicebus-queue   app=order-processor
+order-processor   1         1         1           1           49s       order-processor   kedasamples/sample-dotnet-worker-servicebus-queue   app=order-processor
 ```
 
 ### Deploying our autoscaling

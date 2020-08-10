@@ -1,4 +1,4 @@
-apiVersion: keda.k8s.io/v1alpha1
+apiVersion: keda.sh/v1alpha1 
 kind: TriggerAuthentication
 metadata:
   name: trigger-auth-service-bus-orders
@@ -15,18 +15,15 @@ metadata:
   labels:
     app: order-processor
 data:
-  servicebus-order-management-connectionstring: <base64-encoded-connection-string>
+  servicebus-order-management-connectionstring: RW5kcG9pbnQ9c2I6Ly9qZWhvbGxhbi1rZWRhLWRlbW8uc2VydmljZWJ1cy53aW5kb3dzLm5ldC87U2hhcmVkQWNjZXNzS2V5TmFtZT1rZWRhLW1vbml0b3I7U2hhcmVkQWNjZXNzS2V5PU9vbkZuMVJzbW1oNTcyOWM0WUpOVFNyM0pkWDBuYWNreXFKK2pROTFTVU09O0VudGl0eVBhdGg9b3JkZXJz
 ---
-apiVersion: keda.k8s.io/v1alpha1
+apiVersion: keda.sh/v1alpha1 
 kind: ScaledObject
 metadata:
   name: order-processor-scaler
-  labels:
-    app: order-processor
-    deploymentName: order-processor
 spec:
   scaleTargetRef:
-    deploymentName: order-processor
+    name: order-processor
   # minReplicaCount: 0 Change to define how many minimum replicas you want
   maxReplicaCount: 10
   triggers:
